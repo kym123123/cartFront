@@ -6,9 +6,9 @@ import renderTotal from './utils/renderTotal.js';
 import Modal from './utils/Modal.js';
 import getScrollContainer from './utils/Scroll.js';
 import renderPagination from './utils/renderPagination.js';
-import './imgs/wallpaper.png';
-import './imgs/loader.gif';
-import './style.css';
+// import './imgs/wallpaper.png';
+// import './imgs/loader.gif';
+// import './style.css';
 
 let items = [];
 let myCartItems = [];
@@ -110,10 +110,18 @@ $cartItems.addEventListener('click', async e => {
     method: 'DELETE',
   };
   const res = await fetch(`https://cart-server-ym.herokuapp.com/mycart/delete/${product_id}`, option);
+  console.log(res);
   myCartItems = await res.json();
 
+  console.log(myCartItems);
   $totalCost.textContent = renderTotal(myCartItems);
   $cartItems.replaceChildren(renderMyCart(myCartItems));
+});
+
+$cartItems.addEventListener('click', async e => {
+  myCartItems = await adjustCartNumber(e);
+  console.log(myCartItems);
+  $totalCost.textContent = renderTotal(myCartItems);
 });
 
 $paginationContainer.addEventListener('click', async e => {

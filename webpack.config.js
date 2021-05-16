@@ -1,5 +1,3 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
@@ -41,4 +39,5 @@ module.exports = {
     ],
   },
   mode: 'none',
+  target: 'node', // 실행환경이 노드임을 전달
 };
