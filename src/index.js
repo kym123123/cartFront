@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await fetchItems();
   renderProduct($items, items);
   renderPagination(currentPageNumber, lastPageNumber, $paginationContainer);
+  console.log('hellow');
   document.body.style.display = 'block';
 
   window.addEventListener('scroll', () => {
