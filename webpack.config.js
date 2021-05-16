@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -30,14 +31,13 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-            options: {
-              modules: true, // css 파일들의 모듈화가 가능해짐. css파일별로 클래스 이름이 같아도 겹치지 않는다
-            },
+            options: {},
           },
         ],
       },
     ],
   },
+  plugins: [new HtmlWebpackPlugin()],
   mode: 'none',
   target: 'node', // 실행환경이 노드임을 전달
 };
