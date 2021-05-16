@@ -47,8 +47,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   await fetchItems();
   renderProduct($items, items);
   renderPagination(currentPageNumber, lastPageNumber, $paginationContainer);
-  console.log('hellow');
-  document.body.style.display = 'block';
 
   window.addEventListener('scroll', () => {
     if (window.scrollY >= 200 && flag === 0) {
@@ -67,6 +65,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   window.customElements.define('product-modal', Modal);
 });
+
+window.onload = () => (document.body.style.display = 'block');
 
 $cartContainer.addEventListener('click', async e => {
   // e타겟이 container가 아니거나, 이미 container가 열려있는 상태면 아무것도 하지 않는다.
