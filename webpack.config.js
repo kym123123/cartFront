@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
@@ -30,11 +32,13 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-            options: {},
+            options: {
+              modules: true, // css 파일들의 모듈화가 가능해짐. css파일별로 클래스 이름이 같아도 겹치지 않는다
+            },
           },
         ],
       },
     ],
   },
-  target: 'node',
+  mode: 'none',
 };

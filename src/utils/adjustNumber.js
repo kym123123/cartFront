@@ -40,7 +40,7 @@ const adjustCartNumber = async e => {
       $decrease.classList.add('cart-disabled');
     }
   }
-  const res = await fetch(`https://cart-server-ym.herokuapp.com/${product_id}`, {
+  const res = await fetch(`https://cart-server-ym.herokuapp.com/mycart/edit/${product_id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
