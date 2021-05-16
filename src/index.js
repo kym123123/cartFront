@@ -8,6 +8,7 @@ import getScrollContainer from './utils/Scroll.js';
 import renderPagination from './utils/renderPagination.js';
 import './imgs/wallpaper.png';
 import './imgs/loader.gif';
+import './style.css';
 
 let items = [];
 let myCartItems = [];
