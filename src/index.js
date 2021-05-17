@@ -6,7 +6,6 @@ import renderTotal from './utils/renderTotal.js';
 import Modal from './utils/Modal.js';
 import getScrollContainer from './utils/Scroll.js';
 import renderPagination from './utils/renderPagination.js';
-import './style.css';
 import './imgs/wallpaper.png';
 import './imgs/loader.gif';
 

@@ -15,7 +15,8 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[contenthash].[ext]',
+              publicPath: './dist/',
+              name: '[name].[ext]',
             },
           },
         ],
