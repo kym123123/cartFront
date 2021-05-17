@@ -26,7 +26,7 @@ const getNewProductNode = product => {
 
   $newProductNode.classList.add(product._id);
   $imgNode.setAttribute('data-src', product.imageUrl);
-  $imgNode.setAttribute('src', './imgs/loader.gif');
+  $imgNode.setAttribute('src', './loader.gif');
   $nameNode.textContent = product.name;
   $priceNode.textContent = '$' + product.price;
 
