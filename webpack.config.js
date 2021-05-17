@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
@@ -24,11 +25,14 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
+          // {
+          //   loader: 'style-loader',
+          //   options: {
+          //     injectType: 'singletonStyleTag',
+          //   },
+          // },
           {
-            loader: 'style-loader',
-            options: {
-              injectType: 'singletonStyleTag',
-            },
+            loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader',
@@ -38,7 +42,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [new HtmlWebpackPlugin(), new MiniCssExtractPlugin({ filename: '[name].css' })],
   mode: 'none',
   target: 'node', // 실행환경이 노드임을 전달
 };
