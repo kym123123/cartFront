@@ -16,7 +16,6 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              publicPath: './dist/',
               name: '[name].[ext]',
             },
           },
