@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -44,4 +45,7 @@ module.exports = {
   plugins: [new HtmlWebpackPlugin(), new MiniCssExtractPlugin({ filename: '[name].css' })],
   mode: 'none',
   target: 'node', // 실행환경이 노드임을 전달
+  optimization: {
+    minimize: true,
+  },
 };
