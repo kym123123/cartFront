@@ -29,7 +29,7 @@ const getNewProductNode = product => {
   $imgNode.setAttribute('src', '../imgs/loader.gif');
   $nameNode.textContent = product.name;
   $priceNode.textContent = '$' + product.price;
-
+  //
   return $newProductNode;
 };
 
