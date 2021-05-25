@@ -1,3 +1,5 @@
+import loader from '../imgs/loader.gif';
+
 const $itemTemplate = document.getElementById('item').content.firstElementChild;
 const $newItemsNode = document.getElementById('items').content.firstElementChild;
 
@@ -26,10 +28,10 @@ const getNewProductNode = product => {
 
   $newProductNode.classList.add(product._id);
   $imgNode.setAttribute('data-src', product.imageUrl);
-  $imgNode.setAttribute('src', require('../imgs/loader.gif'));
+  $imgNode.setAttribute('src', loader);
   $nameNode.textContent = product.name;
   $priceNode.textContent = '$' + product.price;
-  //
+
   return $newProductNode;
 };
 

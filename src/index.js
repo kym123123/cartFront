@@ -7,8 +7,6 @@ import Modal from './utils/Modal.js';
 import getScrollContainer from './utils/Scroll.js';
 import renderPagination from './utils/renderPagination.js';
 import './style.css';
-// import './imgs/wallpaper.png';
-// import './imgs/loader.gif';
 
 let items = [];
 let myCartItems = [];
@@ -23,6 +21,7 @@ const $shoppingContainer = document.querySelector('.shopping-container');
 const $shoppingList = document.querySelector('.shopping-list');
 const $arrowLeft = document.querySelector('.arrow-left');
 const $arrowRight = document.querySelector('.arrow-right');
+const $cartToggle = document.querySelector('.cart-toggle');
 let $cartItems = document.querySelector('.cart-items');
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -63,6 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
+  console.log($cartToggle);
   window.customElements.define('product-modal', Modal);
 });
 
@@ -77,6 +77,7 @@ $cartContainer.addEventListener('click', async e => {
   document.body.style.overflowY = 'hidden';
   e.target.classList.add('active');
   $blurContainer.classList.add('active');
+  $cartToggle.classList.add('active');
 
   $totalCost.textContent = renderTotal(myCartItems);
 });
@@ -84,6 +85,7 @@ $cartContainer.addEventListener('click', async e => {
 $blurContainer.addEventListener('click', e => {
   document.body.style.overflowY = 'unset';
   e.target.classList.remove('active');
+  $cartToggle.classList.remove('active');
   $cartContainer.classList.remove('active');
 });
 
@@ -150,4 +152,27 @@ $paginationContainer.addEventListener('click', async e => {
   await fetchItems();
   renderProduct(document.querySelector('.items'), items);
   renderPagination(+e.target.textContent, lastPageNumber, $paginationContainer);
+});
+
+$cartToggle.addEventListener('click', async e => {
+  // e타겟이 container가 아니거나, 이미 container가 열려있는 상태면 아무것도 하지 않는다.
+  if (!(e.target.matches('.cart-toggle') || e.target.matches('.bar'))) return;
+
+  if ($cartToggle.classList.contains('active')) {
+    $cartToggle.classList.remove('active');
+    $cartContainer.classList.remove('active');
+    $blurContainer.classList.remove('active');
+    document.body.style.overflowY = 'unset';
+    return;
+  }
+
+  myCartItems = await requestGetCart();
+  $cartItems.replaceChildren(renderMyCart(myCartItems));
+
+  document.body.style.overflowY = 'hidden';
+  $cartToggle.classList.add('active');
+  $cartContainer.classList.add('active');
+  $blurContainer.classList.add('active');
+
+  $totalCost.textContent = renderTotal(myCartItems);
 });

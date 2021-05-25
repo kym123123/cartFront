@@ -13,6 +13,7 @@ class Modal extends HTMLElement {
     const $newModalItemTemplate = $ModalItemTemplate.cloneNode(true);
 
     $style.textContent = `
+    
       @keyframes slideLeft {
         0% {
           opacity: 0;
@@ -65,8 +66,9 @@ class Modal extends HTMLElement {
         align-items: center;
       }
       .modal-item {
+        min-width: 300px;
         width: 40vw;
-        height: 300px;
+        min-height: 300px;
         background: linear-gradient(90deg, rgba(105, 94, 94, 1) 0%, rgba(60, 50, 50, 1) 100%);
         border-radius: 20px;
         display: flex;
@@ -91,6 +93,7 @@ class Modal extends HTMLElement {
       }
       .modal-item-name, .modal-item-price {
         animation: slideLeft 0.8s ease-out;
+        text-align: center;
       }
       .modal-close {
         position: absolute;
